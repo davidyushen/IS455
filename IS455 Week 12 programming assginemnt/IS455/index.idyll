@@ -1,0 +1,96 @@
+[meta title:"Week12" description:"Short description of your project" /]
+
+[Header
+  fullWidth:true
+  title:"Week12"
+  subtitle:"Week 12 Programming Assignment"
+  author:"Shen Yu"
+  authorLink:""
+  date:"Apr 11, 2022"
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+[var name:"x" value:0 /]
+
+## Introduction
+The Russo-Ukrainian War is an ongoing war between Russia and Ukraine. 
+It began in February 2014 following the Ukrainian Revolution of Dignity, 
+and initially focused on the status of Crimea and parts of the Donbas, 
+internationally recognised as part of Ukraine.
+
+This is an Idyll post about Ukrain and Russia War.
+It contains the data of equipment russia losses.
+I get the dataset from Kaggle.
+[link text:" Get access to the URL of the database" url:"https://www.kaggle.com/code/sokolheavy/2022-ukraine-russia-war-visualization/data?select=russia_losses_equipment.csv" /]
+
+## Data
+```
+[data name:"ru_losses_eq" source:"russia_losses_equipment.csv" /]
+```
+
+[data name:"ru_losses_eq" source:"russia_losses_equipment.csv" /]
+
+[Table data:ru_losses_eq /]
+
+## Visualization
+### Air Weapons Lost
+
+[Float position:"left"]
+Aircraft
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"aircraft"/]
+[/Float]
+
+[Float position:"right"]
+Helicopter
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"helicopter"/]
+[/Float]
+
+[Float position:"left"]
+Anti-aircraft warfare
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"anti-aircraft warfare"/]
+[/Float]
+
+[Float position:"right"]
+Drone
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"drone"/]
+[/Float]
+
+### Ground and other Weapons Lost
+
+[Float position:"left"]
+Tank
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"tank"/]
+[/Float]
+
+[Float position:"right"]
+Field artillery
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"field artillery"/]
+[/Float]
+
+[Float position:"left"]
+APC
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"APC"/]
+[/Float]
+
+[Float position:"right"]
+Military auto
+[Chart type:"time" data:`ru_losses_eq` domain:`null` range:`null` x:"day" y:"military auto"/]
+[/Float]
+
+## Lost of Field Artillery with vega light
+
+
+[IdyllVegaLite data:ru_losses_eq spec:`{
+  width: 500,
+  height: 300,
+  mark: "circle",
+  encoding: {
+		x: {field: "day", type: "temporal", axis:{title:"Day"}},
+		y: {field: "field artillery", type: "quantitative", axis:{title:"# of loss"}},
+  }
+}` /]
+
+
+##Conclusion
+This dataset is about Ukrainian and Russian War. It shows different types of weapons that have been lost by Russians during the war in the first 50 days. From the graph we can clearly sea the increasement of loss and the trends. Which shows that Russian did not defeat Ukrainian easily.
